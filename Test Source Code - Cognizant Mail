@@ -1,0 +1,124 @@
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+
+public class Test1 {
+
+	/**
+	 * @param args
+	 * @throws InterruptedException 
+	 */
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		
+			/*System.setProperty("webdriver.chrome.driver", "D:\\chromedriver_win32\\chromedriver.exe");
+		 WebDriver driver=new ChromeDriver();*/
+		/*
+		System.setProperty("webdriver.ie.driver", "D:\\IEDriverServer_Win32_2.47.0\\IEDriverServer.exe");
+		DesiredCapabilities cap=new DesiredCapabilities();
+		
+		//System.out.println(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS);
+		cap.setCapability("ignoreProtectedModeSettings", true);
+		cap.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+		WebDriver driver=new InternetExplorerDriver(cap);
+		*/
+	//	syso
+		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver_win32\\chromedriver.exe");
+		 WebDriver driver=new ChromeDriver();
+		 
+		// driver.get("https://www.google.com");
+		 
+		/*List<WebElement> links= driver.findElements(By.tagName("a"));
+		
+		System.out.println(links.size());
+		
+		for(int i=0;i<links.size();i++)
+		{
+			//System.out.println(links.get(i).getText() +"---" + i);
+		}
+		
+		
+		//driver.findElement(By.xpath("")).click();
+		
+		
+		driver.getWindowHandles();
+		*/
+		 /*driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		 driver.get("http://www.hdfcbank.com/");
+		
+		 driver.findElement(By.xpath("//*[@id='loginsubmit']")).click();
+		Thread.sleep(5000);
+		Set<String> windows= driver.getWindowHandles();
+		
+		Iterator<String> it=windows.iterator();
+	//	System.out.println(it.next());
+		//System.out.println(it.next());
+		
+		
+		String mainWindow=it.next();
+		
+		String subwindow=it.next();
+		
+		driver.switchTo().window(subwindow);
+		driver.close();
+		driver.switchTo().window(mainWindow);
+		
+		driver.close();
+		 
+		
+		 driver.get("https://www.google.com");
+		
+		 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		//System.out.println(driver.findElements(By.xpath("//input[@name='btnK']")).size());
+		
+		String text=driver.findElement(By.xpath("//input[@name='btnK']")).getAttribute("value");
+		System.out.println(text);
+		
+		 */
+		
+		 driver.get("https://mail.cognizant.com");
+		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		 driver.findElement(By.xpath("//*[@id='username']")).sendKeys("-");
+		 driver.findElement(By.xpath("//*[@id='password']")).sendKeys("-");
+		 driver.findElement(By.xpath("//*[@id='bglogodiv']/div[7]/div/span")).click();
+		 
+				 
+		List<WebElement> folders= driver.findElements(By.xpath("//span[@id='spnFldrNm']") );		
+		/*	 for(int i=0;i<folders.size();i++)
+		 {
+			 System.out.println(folders.get(i).getText()+ "--"+ i);
+		 }
+		 */
+		List<WebElement> mail_count=driver.findElements(By.xpath("//*[@id='spnCV']"));
+		/*	 for(int i=0;i<mail_count.size();i++)
+			 {
+				 System.out.println(mail_count.get(i).getText()+ "--"+ i);
+			 }
+		  */	
+		Thread.sleep(10000);
+		
+
+
+int num=Integer.parseInt(mail_count.get(2).getText());
+if(num!=0)
+{
+	folders.get(5).click();
+}
+		
+	// driver.close();
+		 
+	}
+
+}
